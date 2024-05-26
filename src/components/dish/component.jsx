@@ -1,10 +1,7 @@
-import { useState } from "react";
+import { useCount} from '../../hooks/use-count';
 
 export const Dish = ({dish}) => {
-    const [count, setCount] = useState(0);
-
-    const decrement = () => {if (count > 0) setCount(count - 1); };
-    const increment = () => {if (count < 5) setCount(count + 1); };
+    const {count, decrement, increment} = useCount({initialValue: 0, min: 0, max: 5});
 
     return (
         <div>
