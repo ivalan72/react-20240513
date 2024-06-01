@@ -1,3 +1,4 @@
+import { ReviewForm } from "../review-form/component";
 import { Review } from "../review/component";
 
 export const Reviews = ({reviews}) => {
@@ -6,10 +7,13 @@ export const Reviews = ({reviews}) => {
     }
 
     return (
-        <ul>
-            {reviews.map(review => (
-                <li key={review.id}><Review review={review}/></li>
-            ))}
-        </ul>
+        <div>
+            <ul>
+                {reviews.map(review => (
+                    <li key={review.id}><Review review={review}/></li>
+                ))}
+            </ul>
+            <ReviewForm />
+        </div>
     );
 };
