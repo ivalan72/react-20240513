@@ -1,5 +1,6 @@
 import { useReducer } from "react";
 import { RatingInput } from "../rating-input/component";
+import { Button } from "../button/component";
 
 const DEFAULT_FORM_VALUE = {
     name: '',
@@ -51,7 +52,7 @@ export const ReviewForm = () => {
                     />
                 </div>
                 <div>
-                    <button type="button" onClick={() => dispatch({ type: 'reset' })}>Сохранить</button>
+                    <Button onClick={() => dispatch({ type: 'reset' })}>Сохранить</Button>
                 </div>
             </form>
         </div>
