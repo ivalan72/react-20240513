@@ -1,14 +1,13 @@
-import { useContext } from "react";
-import { ThemeContext } from "../../components/theme-context/context";
-import { Button } from "../../components/button/component";
+import { ThemeToggler } from "../../components/theme-toggler/component";
+import { UserLoginLogout } from "../user-login-logout/component";
+
 
 export const Header = () => {
-    const {theme, toggleTheme} = useContext(ThemeContext);
-
     return (
-            <div>
-                <span>Header</span>
-                <Button onClick={toggleTheme}>Toggle theme</Button>
-            </div>
+        <div>
+            <span>Header</span>
+            <ThemeToggler />
+            <UserLoginLogout />
+        </div>
     );
 };
