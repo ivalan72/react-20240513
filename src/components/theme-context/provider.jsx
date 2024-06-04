@@ -1,7 +1,7 @@
 import { useCallback, useState } from "react";
-import { ThemeContext } from "../../contexts/theme-context";
+import { ThemeContext } from "./context";
 
-export const ThemeContextProvider = ({children}) => {
+export const ThemeContextProvider = ({ children }) => {
     const [theme, setTheme] = useState('default');
 
     const toggleTheme = useCallback(() => {
@@ -9,5 +9,9 @@ export const ThemeContextProvider = ({children}) => {
         setTheme(theme === 'alternative' ? 'default' : 'alternative');
     }, [theme]);
 
-    return <ThemeContext.Provider value={{theme, toggleTheme}}>{children}</ThemeContext.Provider>
+    return (
+        <ThemeContext.Provider value={{ theme, toggleTheme }}>
+            {children}
+        </ThemeContext.Provider>
+    );
 };

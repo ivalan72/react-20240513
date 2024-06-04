@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ThemeContext } from "../../contexts/theme-context";
+import { ThemeContext } from "../../components/theme-context/context";
 import { Button } from "../../components/button/component";
 
 export const Header = () => {
