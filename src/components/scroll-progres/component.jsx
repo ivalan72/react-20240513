@@ -3,19 +3,19 @@ import { useEffect, useRef, useCallback } from "react";
 export const ScrollProgress = ({element = document}) => {
     const barRef = useRef(null);
 
-    const calcProgress = (e) => e.scrollTop * 100 / (e.scrollHeight - e.clientHeight);
-
-    const onScroll = useCallback((event) => {
-        const progress = calcProgress(
-            element === document ?
-                document.documentElement :
-                element
-        );
-
-        barRef.current.style.width = `${progress}%`;
-    }, [element]);
-
     useEffect(() => {
+        const calcProgress = (e) => e.scrollTop * 100 / (e.scrollHeight - e.clientHeight);
+
+        const onScroll = (event) => {
+            const progress = calcProgress(
+                element === document ?
+                    document.documentElement :
+                    element
+            );
+
+            barRef.current.style.width = `${progress}%`;
+        };
+
         element.addEventListener('scroll', onScroll);
 
         return () => {
