@@ -5,13 +5,17 @@ import { Footer } from "./components/footer/component";
 import { Restaurant } from "./components/restaurant/component";
 import { restaurants } from "./constants/mock";
 import { UserContextProvider } from "./components/user-context/provider";
+import { ModalContextProvider } from "./components/modal-context/provider";
+import { Modal } from "./components/modal/component";
+import { AuthForm } from "./auth-form/component";
 
 export const App = () => {
     return (
-        <div>
-            <ScrollProgress />
-            <ThemeContextProvider>
+        <ThemeContextProvider>
+            <ModalContextProvider>
                 <UserContextProvider>
+                    <Modal><AuthForm /></Modal>
+                    <ScrollProgress />
                     <Header />
                     <Restaurant restaurant={restaurants[0]} />
                     <Restaurant restaurant={restaurants[0]} />
@@ -20,7 +24,7 @@ export const App = () => {
                     <Restaurant restaurant={restaurants[0]} />
                     <Footer />
                 </UserContextProvider>
-            </ThemeContextProvider>
-        </div>
+            </ModalContextProvider>
+        </ThemeContextProvider>
     );
 };

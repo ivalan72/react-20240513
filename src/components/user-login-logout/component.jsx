@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { UserContext } from "../user-context/context";
 import { Button } from "../button/component";
+import { ModalContext } from "../modal-context/context";
 
 export const UserLoginLogout = () => {
-    const { username, authorizeUser, logoutUser } = useContext(UserContext);
+    const { username, logoutUser } = useContext(UserContext);
+
+    const { setIsVisible } = useContext(ModalContext);
 
     return (
         <div>
@@ -11,7 +14,7 @@ export const UserLoginLogout = () => {
             {username ?
                 <Button onClick={logoutUser}>Logout</Button>
                 :
-                <Button onClick={() => authorizeUser('testuser')}>Login</Button>
+                <Button onClick={() => setIsVisible(true)}>Login</Button>
             }
         </div>
     );
