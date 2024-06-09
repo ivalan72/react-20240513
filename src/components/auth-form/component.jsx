@@ -1,7 +1,7 @@
-import { useCallback, useContext, useReducer } from "react";
-import { Button } from "../components/button/component";
-import { ModalContext } from "../components/modal-context/context";
-import { UserContext } from "../components/user-context/context";
+import { useContext, useReducer } from "react";
+import { Button } from "../button/component";
+import { ModalContext } from "../modal-context/context";
+import { UserContext } from "../user-context/context";
 
 const DEFAULT_FORM_VALUE = {
     username: '',

@@ -7,7 +7,7 @@ import { restaurants } from "./constants/mock";
 import { UserContextProvider } from "./components/user-context/provider";
 import { ModalContextProvider } from "./components/modal-context/provider";
 import { Modal } from "./components/modal/component";
-import { AuthForm } from "./auth-form/component";
+import { AuthForm } from "./components/auth-form/component";
 
 export const App = () => {
     return (
