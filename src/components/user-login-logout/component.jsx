@@ -9,13 +9,13 @@ export const UserLoginLogout = () => {
     const { setIsVisible } = useContext(ModalContext);
 
     return (
-        <div>
+        <span>
             {username}
             {username ?
                 <Button onClick={logoutUser}>Logout</Button>
                 :
                 <Button onClick={() => setIsVisible(true)}>Login</Button>
             }
-        </div>
+        </span>
     );
 };
