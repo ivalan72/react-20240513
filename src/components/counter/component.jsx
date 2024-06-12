@@ -1,9 +1,11 @@
+import { Button } from "../button/component";
+
 export const Counter = ({count, decrement, increment, min = 0, max = 5}) => {
     return (
         <div>
-            <button onClick={decrement} disabled={count === min}>-</button>
+            <Button onClick={decrement} disabled={count === min}>-</Button>
             {count}
-            <button onClick={increment} disabled={count === max}>+</button>
+            <Button onClick={increment} disabled={count === max}>+</Button>
         </div>
     );
 };

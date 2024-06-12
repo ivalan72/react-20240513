@@ -1,3 +1,5 @@
+import { Button } from "../button/component";
+
 export const RatingInput = ({value, onChange, max = 5}) => {
     return (
         <div>
@@ -5,9 +7,9 @@ export const RatingInput = ({value, onChange, max = 5}) => {
             {new Array(max)
                 .fill(0)
                 .map((item, index) =>
-                    <button onClick={() => onChange(index + 1)} disabled={value === index + 1}>
+                    <Button onClick={() => onChange(index + 1)} disabled={value === index + 1}>
                         {index + 1}
-                    </button>
+                    </Button>
                 )
             }
         </div>
