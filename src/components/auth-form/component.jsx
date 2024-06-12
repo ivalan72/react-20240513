@@ -21,10 +21,8 @@ function reducer(state, { type, payload } = {}) {
     };
 }
 
-export const AuthForm = () => {
+export const AuthForm = ({closeForm}) => {
     const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
-
-    const { setIsVisible } = useContext(ModalContext);
 
     const { authorizeUser } = useContext(UserContext);
 
@@ -48,8 +46,8 @@ export const AuthForm = () => {
                     />
                 </div>
                 <div>
-                    <Button onClick={() => {authorizeUser(form.username); setIsVisible(false);}}>Login</Button>
-                    <Button onClick={() => setIsVisible(false)}>Cancel</Button>
+                    <Button onClick={() => {authorizeUser(form.username); closeForm();}}>Login</Button>
+                    <Button onClick={closeForm}>Cancel</Button>
                 </div>
             </form>
         </div>
