@@ -1,14 +1,14 @@
-import { Restaurant } from '../restaurant/component';
-import { Tabs } from '../tabs/component';
 import { useState } from 'react';
+import { RestaurantsTabs } from '../restaurants-tabs/components';
+import { Restaurant } from '../restaurant/component';
 
-export const Restaurants = ({ restaurants }) => {
-    const [activeRestaurant, setActiveRestaurant] = useState(restaurants[0]);
+export const Restaurants = () => {
+    const [activeRestaurantId, setActiveRestaurantId] = useState();
 
     return (
         <div>
-            <Tabs tabs={restaurants} setActiveTab={setActiveRestaurant} activeTab={activeRestaurant}/>
-            <Restaurant restaurant={activeRestaurant} />
+            <RestaurantsTabs activeRestaurantId={activeRestaurantId} setActiveRestaurantId={setActiveRestaurantId} />
+            <Restaurant restaurantId={activeRestaurantId} />
         </div>
     );
 };

@@ -1,7 +1,14 @@
+import { useSelector } from "react-redux";
 import { Menu } from "../menu/component";
 import { Reviews } from "../reviews/component";
 
-export const Restaurant = ({restaurant}) => {
+export const Restaurant = ({restaurantId}) => {
+    const restaurant = useSelector(
+        (state) => state.restaurant.entities[restaurantId]
+    );
+
+    if (!restaurant) return null;
+
     return (
         <div>
             <h2>{restaurant.name}</h2>

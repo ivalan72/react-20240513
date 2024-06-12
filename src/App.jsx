@@ -2,8 +2,9 @@ import { ScrollProgress } from "./components/scroll-progres/component";
 import { ThemeContextProvider } from "./components/theme-context/provider";
 import { Header } from "./components/header/component";
 import { Footer } from "./components/footer/component";
+import { Restaurants } from "./components/restaurants/component";
 import { Restaurant } from "./components/restaurant/component";
-import { restaurants } from "./constants/mock";
+import { normalizedRestaurants as restaurants } from "./constants/normalized-mock";
 import { UserContextProvider } from "./components/user-context/provider";
 import { Layout } from "./components/layout/component";
 

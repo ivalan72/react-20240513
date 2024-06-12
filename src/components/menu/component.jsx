@@ -3,8 +3,8 @@ import { Dish } from "../dish/component";
 export const Menu = ({menu}) => {
     return (
         <ul>
-            {menu.map(dish => (
-                <li key={dish.id}><Dish dish={dish}/></li>
+            {menu.map(id => (
+                <li key={id}><Dish dishId={id}/></li>
             ))}
         </ul>
     );
