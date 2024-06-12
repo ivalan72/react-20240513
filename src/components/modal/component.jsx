@@ -25,8 +25,8 @@ export const Modal = ({ closeModal, children }) => {
                     height: '50vh',
                     position: 'absolute',
                     zIndex: 2,
-                    left: 'calc(25%)',
-                    top: 'calc(25%)'
+                    left: '25vw',
+                    top: '25vh'
                 }}
             >
                 <div style={{ height: '20px' }}>
