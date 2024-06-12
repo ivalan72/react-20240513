@@ -5,7 +5,6 @@ export const UserContextProvider = ({ children }) => {
     const [username, setUsername] = useState();
 
     const authorizeUser = useCallback((username) => {
-        console.log(`theme: '${username}`);
         setUsername(username);
     }, []);
 
