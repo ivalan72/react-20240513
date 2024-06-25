@@ -1,19 +1,21 @@
-import { useSelector } from 'react-redux';
 import { RestaurantsTabs } from "./components";
-import { selectRestaurantIds } from '../../redux/entities/restaurant/selectors';
+import { useGetRestaurantsQuery } from '../../redux/service/api';
 
 export const RestaurantsTabsContainer = ({activeRestaurantId, setActiveRestaurantId}) => {
-    const restaurantsIds = useSelector(
-        (state) => selectRestaurantIds(state)
-    );
+    const { data: restaurants, isLoading, isFetching } = useGetRestaurantsQuery();
 
-    if (!restaurantsIds) return null;
+    if (isLoading) {
+        return <div>Loaging...</div>
+    }
+
+    if (!restaurants) {
+        return null;
+    }
 
     return (
         <RestaurantsTabs
-            restaurantsIds={restaurantsIds}
+            restaurants={restaurants}
             activeRestaurantId={activeRestaurantId}
             setActiveRestaurantId={setActiveRestaurantId} />
     );
-
 };

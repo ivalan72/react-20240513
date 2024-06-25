@@ -1,12 +1,12 @@
 import { RestaurantTab } from '../tab/container';
 
-export const RestaurantsTabs = ({restaurantsIds, activeRestaurantId, setActiveRestaurantId}) => {
+export const RestaurantsTabs = ({restaurants, activeRestaurantId, setActiveRestaurantId}) => {
     return (
         <div>
-            {restaurantsIds.map((id) => (
-                <RestaurantTab
-                    restaurantId={id}
-                    setActiveTab={() => setActiveRestaurantId(id)}
+            {restaurants.map(({id, name}) => (
+                <RestaurantTab key={id}
+                    name={name}
+                    setActiveTab={() => {console.log(id); setActiveRestaurantId(id)}}
                     active={id === activeRestaurantId} />
             ))}
         </div>
