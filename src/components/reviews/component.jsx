@@ -1,11 +1,15 @@
+import { useContext } from "react";
 import { ReviewForm } from "../review-form/component";
 import { Review } from "../review/component";
 import { useGetReviewsByRestaurantIdQuery } from "../../redux/service/api";
+import { UserContext } from "../user-context/context";
 
 export const Reviews = ({restaurantId}) => {
-    const { data: reviews, isFetching } = useGetReviewsByRestaurantIdQuery(restaurantId);
+    const { data: reviews, isLoading } = useGetReviewsByRestaurantIdQuery(restaurantId);
 
-    if (isFetching) {
+    const { username } = useContext(UserContext);
+
+    if (isLoading) {
         return <div>Loading...</div>;
     }
 
@@ -20,7 +24,10 @@ export const Reviews = ({restaurantId}) => {
                     <li key={review.id}><Review review={review}/></li>
                 ))}
             </ul>
-            <ReviewForm />
+            { username ?
+                <ReviewForm restaurantId={restaurantId} user={username}/> :
+                <div>Log in to leave a review</div>
+            }
         </div>
     );
 };
