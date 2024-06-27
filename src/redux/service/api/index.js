@@ -38,6 +38,16 @@ export const apiService = createApi({
             invalidatesTags: (result, _, {restaurantId}) => [
                 {type: 'Restaurant', id: restaurantId},
             ]
+        }),
+        updateReview: builder.mutation({
+            query: ({reviewId, newReview}) => ({
+                url: `review/${reviewId}`,
+                method: 'PATCH',
+                body: newReview,
+            }),
+            invalidatesTags: (result, _, {reviewId}) => [
+                {type: 'Review', id: reviewId},
+            ]
         })
     })
 });
@@ -47,4 +57,5 @@ export const {
     useGetMenuByRestaurantIdQuery,
     useGetReviewsByRestaurantIdQuery,
     useCreateReviewMutation,
+    useUpdateReviewMutation,
 } = apiService;
