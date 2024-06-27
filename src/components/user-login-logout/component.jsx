@@ -12,7 +12,7 @@ export const UserLoginLogout = () => {
     const closeModal = useCallback(() => { setIsVisible(false) }, []);
 
     return (
-        <div>
+        <span>
             <span>{username}</span>
             {username ?
                 <Button onClick={logoutUser}>Logout</Button>
@@ -20,6 +20,6 @@ export const UserLoginLogout = () => {
                 <Button onClick={() => setIsVisible(true)}>Login</Button>
             }
             {isVisible && <Modal closeModal={closeModal} ><AuthForm closeForm={closeModal}></AuthForm></Modal>}
-        </div>
+        </span>
     );
 };

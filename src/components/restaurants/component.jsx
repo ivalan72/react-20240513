@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { RestaurantsTabs } from '../restaurants-tabs/components';
+import { RestaurantsTabsContainer } from '../restaurants-tabs/container';
 import { Restaurant } from '../restaurant/component';
 
 export const Restaurants = () => {
@@ -7,8 +7,10 @@ export const Restaurants = () => {
 
     return (
         <div>
-            <RestaurantsTabs activeRestaurantId={activeRestaurantId} setActiveRestaurantId={setActiveRestaurantId} />
-            <Restaurant restaurantId={activeRestaurantId} />
+            <RestaurantsTabsContainer
+                activeRestaurantId={activeRestaurantId}
+                setActiveRestaurantId={setActiveRestaurantId} />
+            {activeRestaurantId && <Restaurant restaurantId={activeRestaurantId} />}
         </div>
     );
 };

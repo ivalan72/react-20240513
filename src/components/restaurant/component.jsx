@@ -1,24 +1,28 @@
-import { useSelector } from "react-redux";
 import { Menu } from "../menu/component";
 import { Reviews } from "../reviews/component";
+import { useGetRestaurantsQuery } from "../../redux/service/api";
+import { selectRestaurantFromResult } from "../../redux/service/api/selectors";
 
 export const Restaurant = ({restaurantId}) => {
-    const restaurant = useSelector(
-        (state) => state.restaurant.entities[restaurantId]
+    const { data: restaurant } = useGetRestaurantsQuery(
+        undefined,
+        { selectFromResult: selectRestaurantFromResult(restaurantId) }
     );
-
-    if (!restaurant) return null;
+0
+    if (!restaurant) {
+        return null;
+    }
 
     return (
         <div>
             <h2>{restaurant.name}</h2>
             <div>
                 <h3>Меню</h3>
-                <Menu menu={restaurant.menu}/>
+                <Menu restaurantId={restaurant.id}/>
             </div>
             <div>
                 <h3>Отзывы</h3>
-                <Reviews reviews={restaurant.reviews}/>
+                <Reviews restaurantId={restaurant.id}/>
             </div>
         </div>
     );

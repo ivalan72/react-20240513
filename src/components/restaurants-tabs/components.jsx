@@ -1,16 +1,11 @@
-import { useSelector } from 'react-redux';
 import { RestaurantTab } from '../tab/container';
 
-export const RestaurantsTabs = ({activeRestaurantId, setActiveRestaurantId}) => {
-    const restaurantsIds = useSelector(
-        (state) => state.restaurant.ids
-    );
-
+export const RestaurantsTabs = ({restaurants, activeRestaurantId, setActiveRestaurantId}) => {
     return (
         <div>
-            {restaurantsIds.map((id) => (
-                <RestaurantTab
-                    restaurantId={id}
+            {restaurants.map(({id, name}) => (
+                <RestaurantTab key={id}
+                    name={name}
                     setActiveTab={() => setActiveRestaurantId(id)}
                     active={id === activeRestaurantId} />
             ))}
