@@ -6,7 +6,7 @@ export const RestaurantsTabs = ({restaurants, activeRestaurantId, setActiveResta
             {restaurants.map(({id, name}) => (
                 <RestaurantTab key={id}
                     name={name}
-                    setActiveTab={() => {console.log(id); setActiveRestaurantId(id)}}
+                    setActiveTab={() => setActiveRestaurantId(id)}
                     active={id === activeRestaurantId} />
             ))}
         </div>
