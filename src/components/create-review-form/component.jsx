@@ -21,7 +21,7 @@ function reducer(state, { type, payload } = {}) {
     };
 }
 
-export const ReviewForm = ({restaurantId, user}) => {
+export const CreateReviewForm = ({restaurantId, user}) => {
     const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
 
     const [createReview, {isLoading}] = useCreateReviewMutation();
