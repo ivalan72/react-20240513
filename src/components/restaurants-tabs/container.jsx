@@ -1,8 +1,8 @@
 import { RestaurantsTabs } from "./components";
 import { useGetRestaurantsQuery } from '../../redux/service/api';
 
-export const RestaurantsTabsContainer = ({activeRestaurantId, setActiveRestaurantId}) => {
-    const { data: restaurants, isLoading, isFetching } = useGetRestaurantsQuery();
+export const RestaurantsTabsContainer = () => {
+    const { data: restaurants, isLoading } = useGetRestaurantsQuery();
 
     if (isLoading) {
         return <div>Loaging...</div>
@@ -12,10 +12,5 @@ export const RestaurantsTabsContainer = ({activeRestaurantId, setActiveRestauran
         return null;
     }
 
-    return (
-        <RestaurantsTabs
-            restaurants={restaurants}
-            activeRestaurantId={activeRestaurantId}
-            setActiveRestaurantId={setActiveRestaurantId} />
-    );
+    return <RestaurantsTabs restaurants={restaurants} />;
 };

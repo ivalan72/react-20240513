@@ -1,9 +1,9 @@
 import { Tab } from "./component";
 
-export const RestaurantTab = ({name, setActiveTab, active}) => {
-    if (!name) {
+export const RestaurantTab = ({restaurant}) => {
+    if (!restaurant) {
         return null;
     }
 
-    return <Tab setActiveTab={setActiveTab} active={active}>{name}</Tab>
+    return <Tab to={`${restaurant.id}`}>{restaurant.name}</Tab>
 };

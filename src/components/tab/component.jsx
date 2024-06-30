@@ -1,9 +1,7 @@
-import { Button } from "../button/component";
+import { Link } from "react-router-dom";
 
-export const Tab = ({children, setActiveTab, active}) => {
-    return (
-        <Button onClick={setActiveTab} disabled={active}>
-            {children}
-        </Button>
-    );
+import styles from './styles.module.scss';
+
+export const Tab = ({to, children}) => {
+    return <Link className={`${styles.tab}`} to={to}>{children}</Link>
 };

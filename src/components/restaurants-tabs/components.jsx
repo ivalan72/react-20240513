@@ -1,13 +1,14 @@
 import { RestaurantTab } from '../tab/container';
 
-export const RestaurantsTabs = ({restaurants, activeRestaurantId, setActiveRestaurantId}) => {
+export const RestaurantsTabs = ({restaurants}) => {
+    if (!restaurants) {
+        return null;
+    }
+
     return (
         <div>
-            {restaurants.map(({id, name}) => (
-                <RestaurantTab key={id}
-                    name={name}
-                    setActiveTab={() => setActiveRestaurantId(id)}
-                    active={id === activeRestaurantId} />
+            {restaurants.map((restaurant) => (
+                <RestaurantTab restaurant={restaurant} />
             ))}
         </div>
     );

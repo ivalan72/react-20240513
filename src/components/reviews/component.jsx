@@ -3,8 +3,11 @@ import { CreateReviewForm } from "../create-review-form/component";
 import { Review } from "../review/component";
 import { useGetReviewsByRestaurantIdQuery } from "../../redux/service/api";
 import { UserContext } from "../user-context/context";
+import { useParams } from "react-router-dom";
 
-export const Reviews = ({restaurantId}) => {
+export const Reviews = () => {
+    const { restaurantId } = useParams();
+
     const { data: reviews, isLoading } = useGetReviewsByRestaurantIdQuery(restaurantId);
 
     const { username } = useContext(UserContext);
