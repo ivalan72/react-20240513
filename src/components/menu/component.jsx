@@ -1,10 +1,24 @@
+import { useGetMenuByRestaurantIdQuery } from "../../redux/service/api";
+import { useParams } from "react-router-dom";
 import { Dish } from "../dish/component";
 
-export const Menu = ({menu}) => {
+export const Menu = () => {
+    const { restaurantId } = useParams();
+
+    const { data: dishes, isFetching } = useGetMenuByRestaurantIdQuery(restaurantId);
+
+    if (isFetching) {
+        return <div>Loading...</div>;
+    }
+
+    if (!dishes) {
+        return null;
+    }
+
     return (
         <ul>
-            {menu.map(id => (
-                <li key={id}><Dish dishId={id}/></li>
+            {dishes.map(dish => (
+                <li key={dish.id}><Dish dish={dish}/></li>
             ))}
         </ul>
     );

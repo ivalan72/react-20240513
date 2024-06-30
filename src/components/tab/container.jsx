@@ -1,12 +1,9 @@
-import { useSelector } from "react-redux";
 import { Tab } from "./component";
 
-export const RestaurantTab = ({restaurantId, setActiveTab, active}) => {
-    const restaurant = useSelector(
-        (state) => state.restaurant.entities[restaurantId]
-    );
+export const RestaurantTab = ({restaurant}) => {
+    if (!restaurant) {
+        return null;
+    }
 
-    if (!restaurant) return null;
-
-    return <Tab setActiveTab={setActiveTab} active={active}>{restaurant.name}</Tab>
+    return <Tab to={`${restaurant.id}`}>{restaurant.name}</Tab>
 };

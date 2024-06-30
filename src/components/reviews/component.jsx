@@ -1,19 +1,38 @@
-import { ReviewForm } from "../review-form/component";
+import { useContext } from "react";
+import { CreateReviewForm } from "../create-review-form/component";
 import { Review } from "../review/component";
+import { useGetReviewsByRestaurantIdQuery } from "../../redux/service/api";
+import { UserContext } from "../user-context/context";
+import { useParams } from "react-router-dom";
 
-export const Reviews = ({reviews}) => {
-    if (!reviews || !reviews.length) {
-        return <div>Ещё никто не оставлял отзывов</div>;
+export const Reviews = () => {
+    const { restaurantId } = useParams();
+
+    const { data: reviews, isLoading } = useGetReviewsByRestaurantIdQuery(restaurantId);
+
+    const { username } = useContext(UserContext);
+
+    if (isLoading) {
+        return <div>Loading...</div>;
+    }
+
+    if (!reviews) {
+        return null;
     }
 
     return (
         <div>
             <ul>
-                {reviews.map(id => (
-                    <li key={id}><Review reviewId={id}/></li>
+                {reviews.map((review) => (
+                    <li key={review.id}>
+                        <Review review={review}/>
+                    </li>
                 ))}
             </ul>
-            <ReviewForm />
+            { username ?
+                <CreateReviewForm restaurantId={restaurantId} user={username}/> :
+                <div>Log in to leave a review</div>
+            }
         </div>
     );
 };

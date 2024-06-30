@@ -1,17 +1,15 @@
-import { useReducer } from "react";
+import { useCallback, useReducer } from "react";
 import { RatingInput } from "../rating-input/component";
 import { Button } from "../button/component";
+import { useCreateReviewMutation } from "../../redux/service/api";
 
 const DEFAULT_FORM_VALUE = {
-    name: '',
     text: '',
-    raiting: 0,
+    rating: 5,
 };
 
 function reducer(state, { type, payload } = {}) {
     switch (type) {
-        case 'setName':
-            return { ...state, name: payload };
         case 'setText':
             return { ...state, text: payload };
         case 'setRating':
@@ -23,20 +21,28 @@ function reducer(state, { type, payload } = {}) {
     };
 }
 
-export const ReviewForm = () => {
+export const CreateReviewForm = ({restaurantId, user}) => {
     const [form, dispatch] = useReducer(reducer, DEFAULT_FORM_VALUE);
+
+    const [createReview, {isLoading}] = useCreateReviewMutation();
+
+    const onClick = useCallback(
+        () => {
+            createReview({
+                restaurantId,
+                newReview: {
+                    ...form,
+                    user
+                }
+            });
+           dispatch({ type: 'reset' });
+        },
+        [dispatch,createReview,restaurantId,user,form]
+    );
 
     return (
         <div>
             <form>
-                <div>
-                    <label>Name</label>
-                    <input
-                        type="text"
-                        value={form.name}
-                        onChange={(e) => dispatch({ type: 'setName', payload: e.target.value })}
-                    />
-                </div>
                 <div>
                     <label>Text</label>
                     <input
@@ -52,7 +58,10 @@ export const ReviewForm = () => {
                     />
                 </div>
                 <div>
-                    <Button onClick={() => dispatch({ type: 'reset' })}>Сохранить</Button>
+                    {isLoading ?
+                        <span>Sending...</span> :
+                        <Button onClick={onClick}>Сохранить</Button>
+                    }
                 </div>
             </form>
         </div>
