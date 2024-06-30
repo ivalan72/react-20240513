@@ -1,5 +1,6 @@
 import { useGetMenuByRestaurantIdQuery } from "../../redux/service/api";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
+import { Dish } from "../dish/component";
 
 export const Menu = () => {
     const { restaurantId } = useParams();
@@ -17,7 +18,7 @@ export const Menu = () => {
     return (
         <ul>
             {dishes.map(dish => (
-                <li key={dish.id}><Link to={`/dish/${dish.id}`}>{dish.name}</Link></li>
+                <li key={dish.id}><Dish dish={dish}/></li>
             ))}
         </ul>
     );

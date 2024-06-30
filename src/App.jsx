@@ -7,9 +7,9 @@ import { Layout } from "./components/layout/component";
 import { Restaurant } from "./components/restaurant/component";
 import { Menu } from "./components/menu/component";
 import { Reviews } from "./components/reviews/component";
-import { Dish } from "./components/dish/component";
 import { HomePage } from "./pages/home";
 import { RestaurantsPage } from "./pages/restaurants";
+import { DishPage } from "./pages/dish";
 
 const router = createBrowserRouter([{
     path: '/',
@@ -36,7 +36,7 @@ const router = createBrowserRouter([{
         }]
     }, {
         path: 'dish/:dishId',
-        element: <Dish />
+        element: <DishPage />
     }]
 }]);
 
